@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><count-up> Web Component</title>
+    <script async src="https://file-size.github.io/element.js"></script>
+    <script async src="https://lo-sum.github.io/element.js"></script>
+    <script async src="./element.js"></script>
+    <style onload="this.disabled=0">
+        body {
+            --background-color: teal;
+            --text-color: #f6fde1;
+            zoom: .5;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin-bottom: 10vh;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        count-up {
+            --count-up-duration: 500;
+            /* One CSS property can style multiple <count-up> as <count-up box> */
+            /* any box value is a TRUE value!! */
+            --count-up-box: yes;
+        }
+
+        section {
+            margin: 2ch 0 2ch 0;
+        }
+
+        /* Formatting <lorem-ipsum> */
+        lorem-ipsum {
+            /* all <lorem-ipsum> are controlled with Attributes OR CSS properties (in that order) */
+            /* number of paragraphs */
+            --lorem-ipsum-par: 3;
+            /* minimum number of sentences */
+            --lorem-ipsum-smin: 1;
+            /* maximum number of sentences */
+            --lorem-ipsum-smax: 3;
+        }
+
+        [class^="grid"] {
+            display: grid;
+            grid-gap: 1ch;
+        }
+
+        .grid1 {
+            width: 30%;
+            margin: 0 auto;
+        }
+
+        .grid2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.body.addEventListener("count-up", (e) => {
+            // every <count-up> will trigger this event after counting is done
+            console.log("finished", e.detail)
+        })
+    </script>
+    <h1>&lt;count-up> Web Component</h1>
+    <p>
+        Inspiration: <a style="color:white" href="https://codepen.io/nathanlong/pen/NWLWXXx">A CodePen by Nathan
+            Long</a>
+    </p>
+    <section>
+        These numbers will count up from 0 to the specified value <count-up nobox duration="100000"></count-up> when they
+        enter the viewport, making a small statement from an
+        otherwise static number. This has a slight easing applied and will properly format decimals and commas
+        thanks to .toLocaleString().
+    </section>
+    <section class="grid3">
+        <count-up to="8.02" locale="nl" suffix="B" dur="1000">Humans on this world</count-up>
+        <count-up from="100" to="1729" locale="us">is the smallest<br><a
+                href="https://en.wikipedia.org/wiki/Taxicab_number">"Taxicab" Number</a></count-up>
+        <count-up to="21%" suffix="%">AI developers<br>are female</count-up>
+    </section>
+    <lorem-ipsum par="2"><!-- par attribute overrules CSS property--></lorem-ipsum>
+    <section class="grid2">
+        <count-up to="10.3" suffix="K">Average distance to the coffee pot</count-up>
+        <count-up to="500,000">bagels consumed in a week (by me)</count-up>
+    </section>
+    <lorem-ipsum></lorem-ipsum>
+    <section class="grid1">
+        <count-up to="50" suffix="%">Never scrolled down this page</count-up>
+    </section>
+    <lorem-ipsum></lorem-ipsum>
+    <section class="grid2">
+        <count-up to="12000">SpaceX satellites are planned to be deployed</count-up>
+        <count-up to="486.50" currency="USD" locale="us" prefix="">is Elon Musk his income<br><i>per
+                second</i></count-up>
+    </section>
+    <lorem-ipsum></lorem-ipsum>
+
+</html>

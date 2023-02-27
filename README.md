@@ -1,4 +1,4 @@
-# scroll-number.github.io
-&lt;scroll-number> Web Component
+# count-up.github.io
+&lt;count-up> Web Component
 
 https://codepen.io/nathanlong/pen/NWLWXXx
